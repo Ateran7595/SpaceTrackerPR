@@ -136,7 +136,8 @@ public class RunSimulation {
                 trackingSystem.displayObjectsInLEO();
                 break;
             case "2":
-                System.out.println("under development :("); //NEXT ONE TO DO!
+                trackingSystem.assessOrbitStatusAndExport();
+                break;
             default:
                 System.out.println("Back or Invalid option");
         }

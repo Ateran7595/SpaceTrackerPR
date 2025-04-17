@@ -12,6 +12,9 @@ public abstract class SpaceObject {
     protected String geoHash;
     protected int daysOld;
 
+    protected boolean stillInOrbit;
+    protected String riskLevel;
+
     public SpaceObject(int recordId, int noradId, String name, String country, String orbitType, String objectType,
                        int launchYear, String launchSite, double longitude, double avgLongitude,
                        String geoHash, int daysOld) {
@@ -46,5 +49,21 @@ public abstract class SpaceObject {
         return recordId + ", " + name + ", " + country + ", " + orbitType + ", " +
                 launchYear + ", " + launchSite + ", " + longitude + ", " + avgLongitude + ", " +
                 geoHash + ", " + daysOld;
+    }
+       
+    public boolean isStillInOrbit() {
+        return stillInOrbit;
+    }
+
+    public void setStillInOrbit(boolean stillInOrbit) {
+        this.stillInOrbit = stillInOrbit;
+    }
+
+    public String getRiskLevel() {
+        return riskLevel;
+    }
+
+    public void setRiskLevel(String riskLevel) {
+        this.riskLevel = riskLevel;
     }
 }
