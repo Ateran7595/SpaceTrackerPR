@@ -1,4 +1,6 @@
 import java.util.*;
+import java.io.PrintWriter;
+
 
 public class TrackingSystem {
     private List<SpaceObject> spaceObjects = new ArrayList<>();

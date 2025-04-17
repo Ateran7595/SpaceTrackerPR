@@ -21,25 +21,26 @@ public class CSVReader {
                 double avgLongitude = parts[9].isEmpty() ? 0.0 : Double.parseDouble(parts[9]);
                 String geoHash = parts[10];
                 int daysOld = parts[19].isEmpty() ? 0 : Integer.parseInt(parts[19]);
+                int conjunctionCount = parts.length > 20 && !parts[20].isEmpty() ? Integer.parseInt(parts[20]) : 0;
 
                 SpaceObject obj;
 
                 switch (objectType.toUpperCase()) {
                     case "DEBRIS":
                         obj = new Debris(recordId, noradId, name, country, orbitType, objectType,
-                                         launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
+                                launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld, conjunctionCount);
                         break;
                     case "PAYLOAD":
                         obj = new Satellite(recordId, noradId, name, country, orbitType, objectType,
-                                            launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
+                                launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
                         break;
                     case "ROCKET BODY":
                         obj = new RocketBody(recordId, noradId, name, country, orbitType, objectType,
-                                             launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
+                                launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
                         break;
                     default:
                         obj = new UnknownObject(recordId, noradId, name, country, orbitType, objectType,
-                                                launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
+                                launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
                         break;
                 }
 
