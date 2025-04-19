@@ -1,6 +1,25 @@
 import java.io.*;
 
+/**
+ * The {@code CSVReader} class is responsible for reading satellite and debris data
+ * from a CSV file and populating a {@link TrackingSystem} with the parsed objects.
+ */
 public class CSVReader {
+
+    /**
+     * Loads space objects from a CSV file and adds them to the specified {@link TrackingSystem}.
+     *
+     * <p>The CSV is expected to have a header row followed by rows containing the following fields:
+     * <pre>
+     * RecordID, NoradID, Name, Country, OrbitType, ObjectType,
+     * LaunchYear, LaunchSite, Longitude, AvgLongitude, GeoHash, ..., DaysOld, ConjunctionCount
+     * </pre>
+     * Some fields may be empty and are handled appropriately.
+     *
+     * @param filename the name of the CSV file to load
+     * @param system the {@code TrackingSystem} instance where parsed objects will be stored
+     * @throws IOException if an I/O error occurs during reading
+     */
     public void loadObjects(String filename, TrackingSystem system) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(filename));
         String line = br.readLine(); // Skip header

@@ -1,10 +1,23 @@
 import java.util.*;
 import java.io.*;
 
+/**
+ * The {@code RunSimulation} class serves as the entry point for the space object tracking simulation.
+ * It provides a console-based menu for different types of users such as Scientists, 
+ * Space Agency Representatives, Policymakers, and Administrators to interact with the system.
+ * 
+ * <p>The system loads data from a CSV file and utilizes the {@link TrackingSystem} to provide tracking features.</p>
+ */
 public class RunSimulation {
     private static final Scanner scanner = new Scanner(System.in);
     private static final TrackingSystem trackingSystem = new TrackingSystem();
 
+    /**
+     * The main method launches the application, loads data from a CSV file,
+     * and presents a menu for user type selection.
+     * 
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
         loadDataFromCSV(); // <-- Updated to read from CSV
 
@@ -40,6 +53,9 @@ public class RunSimulation {
         }
     }
 
+    /**
+     * Displays the Scientist menu and handles related actions such as tracking and assessing orbits.
+     */
     private static void scientistMenu() {
         while (true) {
             System.out.println("\nScientist Menu:");
@@ -60,6 +76,9 @@ public class RunSimulation {
         }
     }
 
+    /**
+     * Displays the Space Agency Representative menu and handles related (currently unimplemented) actions.
+     */
     private static void spaceAgencyMenu() {
         while (true) {
             System.out.println("\nSpace Agency Menu:");
@@ -80,6 +99,9 @@ public class RunSimulation {
         }
     }
 
+    /**
+     * Displays the Policymaker menu and handles related (currently unimplemented) actions.
+     */
     private static void policyMakerMenu() {
         while (true) {
             System.out.println("\nPolicy Maker Menu:");
@@ -100,6 +122,9 @@ public class RunSimulation {
         }
     }
 
+    /**
+     * Displays the Administrator menu and handles user management features (currently unimplemented).
+     */
     private static void administratorMenu() {
         while (true) {
             System.out.println("\nAdministrator Menu:");
@@ -123,6 +148,9 @@ public class RunSimulation {
         }
     }
 
+    /**
+     * Displays the submenu for selecting which type of space object to track.
+     */
     private static void trackObjectsMenu() {
         System.out.println("\nTrack Objects:");
         System.out.println("1. Rocket Body\n2. Debris\n3. Payload\n4. Unknown\n5. Back");
@@ -149,6 +177,9 @@ public class RunSimulation {
         }
     }
 
+    /**
+     * Displays the submenu for assessing orbit status and selecting tracking methods.
+     */
     private static void OrbitStatus() {
         System.out.println("\nAssess Orbit Status:");
         System.out.println("1. Track Objects in LEO\n2. Assess if debris is still in orbit\n3. Back");
@@ -167,6 +198,10 @@ public class RunSimulation {
         }
     }
 
+    /**
+     * Loads space object data from a CSV file using {@link CSVReader}.
+     * If successful, logs the event and informs the user; otherwise logs the error.
+     */
     private static void loadDataFromCSV() {
         CSVReader reader = new CSVReader();
         try {

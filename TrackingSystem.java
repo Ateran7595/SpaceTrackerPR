@@ -1,14 +1,29 @@
 import java.util.*;
 import java.io.PrintWriter;
 
-
+/**
+ * The {@code TrackingSystem} class manages a list of tracked space objects.
+ * It allows filtering, displaying, and assessing the orbital status of these objects,
+ * and can export relevant data to CSV and text files.
+ */
 public class TrackingSystem {
     private List<SpaceObject> spaceObjects = new ArrayList<>();
 
+    /**
+     * Adds a space object to the tracking system.
+     *
+     * @param obj the {@link SpaceObject} to add
+     */
     public void addObject(SpaceObject obj) {
         spaceObjects.add(obj);
     }
 
+    /**
+     * Filters the tracked space objects by their type.
+     *
+     * @param type the object type to filter by (e.g., "Satellite", "Debris")
+     * @return a list of space objects matching the specified type
+     */
     public List<SpaceObject> filterByType(String type) {
         List<SpaceObject> result = new ArrayList<>();
         for (SpaceObject obj : spaceObjects) {
@@ -19,6 +34,11 @@ public class TrackingSystem {
         return result;
     }
 
+    /**
+     * Displays all objects of a specified type in the console.
+     *
+     * @param type the type of object to display
+     */
     public void displayObjects(String type) {
         List<SpaceObject> objects = filterByType(type);
         if (objects.isEmpty()) {
@@ -30,6 +50,10 @@ public class TrackingSystem {
         }
     }
 
+    /**
+     * Displays all objects currently in Low Earth Orbit (LEO).
+     * Prints their full data in a formatted structure.
+     */
     public void displayObjectsInLEO() {
         List<SpaceObject> leoObjects = new ArrayList<>();
     
@@ -58,6 +82,11 @@ public class TrackingSystem {
         }
     }
 
+    /**
+     * Returns a copy of all tracked space objects.
+     *
+     * @return a list of all {@link SpaceObject} instances
+     */
     public List<SpaceObject> getAllObjects() {
         return new ArrayList<>(spaceObjects); // return a copy to avoid external modification
     }
@@ -70,7 +99,7 @@ public class TrackingSystem {
         for (SpaceObject obj : spaceObjects) {
             boolean hasOrbitType = obj.getOrbitType() != null && !obj.getOrbitType().equalsIgnoreCase("unknown");
             boolean hasLongitude = obj.getLongitude() != 0.0;
-            boolean hasConjunction = obj instanceof Debris && ((Debris) obj).getConjunctionCount() >= 1; // assuming a Debris subclass
+            boolean hasConjunction = obj instanceof Debris && ((Debris) obj).getConjunctionCount() >= 1;
     
             boolean stillInOrbit = hasOrbitType && hasLongitude && obj.getDaysOld() < 15000 && hasConjunction;
             obj.setStillInOrbit(stillInOrbit);
@@ -93,6 +122,11 @@ public class TrackingSystem {
         writeExitedDebrisReport("exited_debris_report.txt", inOrbitCount, exitedCount, exitedDebris);
     }
 
+    /**
+     * Exports all space object data to a CSV file.
+     *
+     * @param fileName the name of the CSV file to write
+     */
     private void exportToCSV(String fileName) {
         try (PrintWriter writer = new PrintWriter(fileName)) {
             // Header
@@ -122,6 +156,14 @@ public class TrackingSystem {
         }
     }
 
+    /**
+     * Writes a report of all objects that have exited orbit to a TXT file.
+     *
+     * @param fileName      the name of the TXT file
+     * @param inOrbit       the count of objects still in orbit
+     * @param exited        the count of objects that have exited
+     * @param exitedDebris  the list of debris objects that exited orbit
+     */
     private void writeExitedDebrisReport(String fileName, int inOrbit, int exited, List<SpaceObject> exitedDebris) {
         try (PrintWriter writer = new PrintWriter(fileName)) {
             writer.println("Orbit Assessment Report");
@@ -151,5 +193,4 @@ public class TrackingSystem {
             e.printStackTrace();
         }
     }
-    
 }
