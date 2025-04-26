@@ -1,4 +1,7 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
+import java.util.regex.*;
 
 /**
  * The {@code CSVReader} class is responsible for reading satellite and debris data
@@ -6,70 +9,129 @@ import java.io.*;
  */
 public class CSVReader {
 
-    /**
-     * Loads space objects from a CSV file and adds them to the specified {@link TrackingSystem}.
-     *
-     * <p>The CSV is expected to have a header row followed by rows containing the following fields:
-     * <pre>
-     * RecordID, NoradID, Name, Country, OrbitType, ObjectType,
-     * LaunchYear, LaunchSite, Longitude, AvgLongitude, GeoHash, ..., DaysOld, ConjunctionCount
-     * </pre>
-     * Some fields may be empty and are handled appropriately.
-     *
-     * @param filename the name of the CSV file to load
-     * @param system the {@code TrackingSystem} instance where parsed objects will be stored
-     * @throws IOException if an I/O error occurs during reading
-     */
     public void loadObjects(String filename, TrackingSystem system) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(filename));
-        String line = br.readLine(); // Skip header
+        // Use FileInputStream and InputStreamReader to ensure proper encoding handling
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filename), StandardCharsets.UTF_8))) {
+            String headerLine = br.readLine();
+            if (headerLine == null) return;
 
-        while ((line = br.readLine()) != null) {
-            String[] parts = line.split(",", -1); // -1 includes trailing empty values
+            // Remove BOM (Byte Order Mark) if it exists at the start of the line
+            headerLine = headerLine.replaceAll("^[\\ufeff]", ""); // Removes BOM if present
 
-            try {
-                int recordId = Integer.parseInt(parts[0]);
-                int noradId = Integer.parseInt(parts[1]);
-                String name = parts[2];
-                String country = parts[3];
-                String orbitType = parts[4];
-                String objectType = parts[5];
-                int launchYear = Integer.parseInt(parts[6]);
-                String launchSite = parts[7];
-                double longitude = parts[8].isEmpty() ? 0.0 : Double.parseDouble(parts[8]);
-                double avgLongitude = parts[9].isEmpty() ? 0.0 : Double.parseDouble(parts[9]);
-                String geoHash = parts[10];
-                int daysOld = parts[19].isEmpty() ? 0 : Integer.parseInt(parts[19]);
-                int conjunctionCount = parts.length > 20 && !parts[20].isEmpty() ? Integer.parseInt(parts[20]) : 0;
+            // Clean the header line by trimming any leading/trailing spaces
+            String[] headers = headerLine.split(",", -1);
+            Map<String, Integer> columnIndex = new HashMap<>();
 
-                SpaceObject obj;
+            // Map headers to their indices for easy access
+            for (int i = 0; i < headers.length; i++) {
+                columnIndex.put(headers[i].trim().toLowerCase(), i); // Case insensitive match
+            }
 
-                switch (objectType.toUpperCase()) {
-                    case "DEBRIS":
-                        obj = new Debris(recordId, noradId, name, country, orbitType, objectType,
-                                launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld, conjunctionCount);
-                        break;
-                    case "PAYLOAD":
-                        obj = new Satellite(recordId, noradId, name, country, orbitType, objectType,
-                                launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
-                        break;
-                    case "ROCKET BODY":
-                        obj = new RocketBody(recordId, noradId, name, country, orbitType, objectType,
-                                launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
-                        break;
-                    default:
-                        obj = new UnknownObject(recordId, noradId, name, country, orbitType, objectType,
-                                launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
-                        break;
+            // Debug: Print column mappings
+            System.out.println("Column Index Map: " + columnIndex);
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                // Remove BOM from each line (if any)
+                line = line.replaceAll("^[\\ufeff]", ""); // Remove BOM if present in the line
+
+                // Parse the line using a regular expression that accounts for commas inside quotes
+                String[] parts = parseCSVLine(line);
+
+                // Debug: Print parsed line (check if the parts are split correctly)
+                System.out.println("Parsed Line: " + Arrays.toString(parts));  // Debug output
+
+                try {
+                    // Debug: Check the column index for 'record_id'
+                    Integer recordIdIndex = columnIndex.get("record_id");
+                    System.out.println("record_id index: " + recordIdIndex);  // Debug line
+
+                    // Get the record_id and other fields
+                    int recordId = getInt(parts, columnIndex, "record_id");
+                    System.out.println("Record ID: " + recordId); // Debugging line to check the parsed ID
+
+                    // Continue parsing the rest of the columns
+                    int noradId = getInt(parts, columnIndex, "norad_cat_id");
+                    String name = getStr(parts, columnIndex, "satellite_name");
+                    String country = getStr(parts, columnIndex, "country");
+                    String orbitType = getStr(parts, columnIndex, "approximate_orbit_type");
+                    String objectType = getStr(parts, columnIndex, "object_type");
+                    int launchYear = getInt(parts, columnIndex, "launch_year");
+                    String launchSite = getStr(parts, columnIndex, "launch_site");
+                    double longitude = getDouble(parts, columnIndex, "longitude");
+                    double avgLongitude = getDouble(parts, columnIndex, "avg_longitude");
+                    String geoHash = getStr(parts, columnIndex, "geohash");
+                    int daysOld = getInt(parts, columnIndex, "days_old");
+                    int conjunctionCount = getInt(parts, columnIndex, "conjunction_count");
+
+                    // Debug: Show what's being parsed
+                    System.out.printf("Parsed: ID=%d, DaysOld=%d, Name=%s, Type=%s%n",
+                            recordId, daysOld, name, objectType);
+
+                    // Create the SpaceObject based on the object type
+                    SpaceObject obj;
+                    switch (objectType.toUpperCase()) {
+                        case "DEBRIS":
+                            obj = new Debris(recordId, noradId, name, country, orbitType, objectType,
+                                    launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld, conjunctionCount);
+                            break;
+                        case "PAYLOAD":
+                            obj = new Satellite(recordId, noradId, name, country, orbitType, objectType,
+                                    launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
+                            break;
+                        case "ROCKET BODY":
+                            obj = new RocketBody(recordId, noradId, name, country, orbitType, objectType,
+                                    launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
+                            break;
+                        default:
+                            obj = new UnknownObject(recordId, noradId, name, country, orbitType, objectType,
+                                    launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
+                            break;
+                    }
+
+                    // Add object to the tracking system
+                    system.addObject(obj);
+                } catch (Exception e) {
+                    System.err.println("Skipping invalid line: " + line);
+                    e.printStackTrace(); // Optional: for deeper debugging
                 }
-
-                system.addObject(obj);
-
-            } catch (Exception e) {
-                System.out.println("Skipping invalid line: " + line);
             }
         }
+    }
 
-        br.close();
+    private int getInt(String[] parts, Map<String, Integer> map, String key) {
+        String value = getStr(parts, map, key);
+        // Debug: Show the value retrieved for the key
+        System.out.println("Retrieved value for " + key + ": " + value); // Debug line
+        try {
+            return value.isEmpty() ? 0 : Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            System.err.printf("Warning: Could not parse integer for key '%s': '%s'%n", key, value);
+            return 0;
+        }
+    }
+
+    private String getStr(String[] parts, Map<String, Integer> map, String key) {
+        Integer idx = map.get(key.toLowerCase());
+        return (idx != null && idx < parts.length) ? parts[idx].trim() : "";
+    }
+
+    private double getDouble(String[] parts, Map<String, Integer> map, String key) {
+        String value = getStr(parts, map, key);
+        try {
+            return value.isEmpty() ? 0.0 : Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            System.err.printf("Warning: Could not parse double for key '%s': '%s'%n", key, value);
+            return 0.0;
+        }
+    }
+
+    /**
+     * Handles proper parsing of a CSV line to deal with commas inside quotes.
+     */
+    private String[] parseCSVLine(String line) {
+        // Use a regular expression to split by commas, respecting commas inside quotes
+        String regex = ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)";
+        return line.split(regex, -1); // Ensure it handles trailing commas too
     }
 }

@@ -23,7 +23,7 @@ public class RunSimulation {
 
         while (true) {
             System.out.println("Select user type:");
-            System.out.println("1. Scientist\n2. Space Agency Rep\n3. Policymaker\n4. Administrator\n5. Exit");
+            System.out.println("1. Scientist\n2. Space Agency Rep\n3. Policymaker\n4. Administrator\n5. EXIT");
             String choice = scanner.nextLine();
 
             switch (choice) {
