@@ -24,6 +24,7 @@ public class RunSimulation {
         while (true) {
             System.out.println("\nSelect user type:");
             System.out.println("1. Scientist\n2. Space Agency Rep\n3. Policymaker\n4. Administrator\n5. EXIT");
+            // Try adding self explanatory inputs //
             String choice = scanner.nextLine();
 
             switch (choice) {
@@ -262,7 +263,13 @@ public class RunSimulation {
             System.out.println("Data loaded successfully from rso_metrics.csv.");
         } catch (IOException e) {
             LoggerUtility.log("Error loading data from rso_metrics.csv: " + e.getMessage());
-            System.out.println("Error loading CSV: " + e.getMessage());
+            System.out.println("Error loading CSV: " + e.getMessage() + ". Please restart the program.");
         }
     }
+
+    // Helper to let us test the LoadDataFromCSV without changing to a public method.
+    public static void testableLoadDataFromCSV() {
+        loadDataFromCSV();
+    }
+    
 }
