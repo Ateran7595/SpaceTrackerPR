@@ -22,7 +22,7 @@ public class RunSimulation {
         loadDataFromCSV(); // <-- Updated to read from CSV
 
         while (true) {
-            System.out.println("Select user type:");
+            System.out.println("\nSelect user type:");
             System.out.println("1. Scientist\n2. Space Agency Rep\n3. Policymaker\n4. Administrator\n5. EXIT");
             String choice = scanner.nextLine();
 
@@ -68,36 +68,41 @@ public class RunSimulation {
             return true; // Already logged in
         }
     
-        Map<String, String> credentials = new HashMap<>();
-        credentials.put("scientist", "science123");
-        credentials.put("agency", "space456");
-        credentials.put("policy", "policy789");
-        credentials.put("admin", "admin000");
+        // Load users from the CSV file
+        List<User> users = UserManager.loadUsers();
     
         System.out.println("\n" + userType + " Login");
         System.out.print("Enter username: ");
-        String username = scanner.nextLine().toLowerCase();
+        String username = scanner.nextLine().toLowerCase();  // Ensure case-insensitivity
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
     
-        String correctPassword = credentials.get(username);
+        // Find the user in the loaded user list
+        for (User user : users) {
+            // Check if the username matches and the userType is correct
+            if (user.getUsername().equalsIgnoreCase(username) && user.getUserType().equalsIgnoreCase(userType)) {
+                if (user.getPassword().equals(password)) {
+                    System.out.println("Login successful!");
+                    LoggerUtility.log(userType + " login successful.");
     
-        // Here's the corrected check:
-        if (username.equals(userType.toLowerCase()) && correctPassword != null && password.equals(correctPassword)) {
-            System.out.println("Login successful!");
-            LoggerUtility.log(userType + " login successful.");
+                    // Mark this user type as logged in
+                    loginStatus.put(userType.toLowerCase(), true);
     
-            // Mark this user type as logged in
-            loginStatus.put(userType.toLowerCase(), true);
-    
-            return true;
-        } else {
-            System.out.println("\nInvalid username or password.");
-            LoggerUtility.log(userType + " login failed.");
-            return false;
+                    return true;
+                } else {
+                    System.out.println("\nIncorrect password.");
+                    LoggerUtility.log(userType + " login failed (wrong password).");
+                    return false;
+                }
+            }
         }
-    }
     
+        // If we didn't find the user or user type didn't match
+        System.out.println("\nInvalid username or user type.");
+        LoggerUtility.log(userType + " login failed (user not found).");
+        return false;
+    }
+        
     /**
      * Displays the Scientist menu and handles related actions such as tracking and assessing orbits.
      */
@@ -175,20 +180,22 @@ public class RunSimulation {
             System.out.println("\nAdministrator Menu:");
             System.out.println("1. Create User\n2. Manage User\n3. Delete User\n4. Back");
             String choice = scanner.nextLine();
-            if (choice.equals("1")) {
-                LoggerUtility.log("Administrator tried to create a user (not yet implemented).");
-                System.out.println("Error: Functionality Under Development");
-            } else if (choice.equals("2")) {
-                LoggerUtility.log("Administrator tried to manage users (not yet implemented).");
-                System.out.println("Error: Functionality Under Development");
-            } else if (choice.equals("3")) {
-                LoggerUtility.log("Administrator tried to delete a user (not yet implemented).");
-                System.out.println("Error: Functionality Under Development");
-            } else if (choice.equals("4")) {
-                LoggerUtility.log("Administrator returned to main menu.");
-                break;
-            } else {
-                System.out.println("Invalid input.");
+            
+            switch (choice) {
+                case "1":
+                    UserManager.createUser(scanner);
+                    break;
+                case "2":
+                    UserManager.manageUser(scanner);
+                    break;
+                case "3":
+                    UserManager.deleteUser(scanner);
+                    break;
+                case "4":
+                    LoggerUtility.log("Administrator returned to main menu.");
+                    return;
+                default:
+                    System.out.println("Invalid input.");
             }
         }
     }
