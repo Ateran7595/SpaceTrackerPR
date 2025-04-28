@@ -11,7 +11,7 @@ import java.io.*;
 public class RunSimulation {
     private static final Scanner scanner = new Scanner(System.in);
     private static final TrackingSystem trackingSystem = new TrackingSystem();
-
+    private static Map<String, Boolean> loginStatus = new HashMap<>();
     /**
      * The main method launches the application, loads data from a CSV file,
      * and presents a menu for user type selection.
@@ -28,31 +28,76 @@ public class RunSimulation {
 
             switch (choice) {
                 case "1":
-                    LoggerUtility.log("Scientist accessed the system.");
-                    scientistMenu();
+                    if (login("scientist")) {
+                        LoggerUtility.log("Scientist accessed the system.");
+                        scientistMenu();
+                    }
                     break;
                 case "2":
-                    LoggerUtility.log("Space Agency Representative accessed the system.");
-                    spaceAgencyMenu();
+                    if (login("agency")) {
+                        LoggerUtility.log("Space Agency Representative accessed the system.");
+                        spaceAgencyMenu();
+                    }
                     break;
                 case "3":
-                    LoggerUtility.log("Policymaker accessed the system.");
-                    policyMakerMenu();
+                    if (login("policy")) {
+                        LoggerUtility.log("Policymaker accessed the system.");
+                        policyMakerMenu();
+                    }
                     break;
                 case "4":
-                    LoggerUtility.log("Administrator accessed the system.");
-                    administratorMenu();
+                    if (login("admin")) {
+                        LoggerUtility.log("Administrator accessed the system.");
+                        administratorMenu();
+                    }
                     break;
                 case "5":
                     LoggerUtility.log("Session ended by user.");
                     System.out.println("Exiting...");
                     return;
                 default:
-                    System.out.println("Functionality not implemented for this user yet.");
+                    System.out.println("Invalid Input");
             }
+            
         }
     }
 
+    private static boolean login(String userType) {
+        // Check if already logged in
+        if (loginStatus.getOrDefault(userType.toLowerCase(), false)) {
+            return true; // Already logged in
+        }
+    
+        Map<String, String> credentials = new HashMap<>();
+        credentials.put("scientist", "science123");
+        credentials.put("agency", "space456");
+        credentials.put("policy", "policy789");
+        credentials.put("admin", "admin000");
+    
+        System.out.println("\n" + userType + " Login");
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine().toLowerCase();
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+    
+        String correctPassword = credentials.get(username);
+    
+        // Here's the corrected check:
+        if (username.equals(userType.toLowerCase()) && correctPassword != null && password.equals(correctPassword)) {
+            System.out.println("Login successful!");
+            LoggerUtility.log(userType + " login successful.");
+    
+            // Mark this user type as logged in
+            loginStatus.put(userType.toLowerCase(), true);
+    
+            return true;
+        } else {
+            System.out.println("\nInvalid username or password.");
+            LoggerUtility.log(userType + " login failed.");
+            return false;
+        }
+    }
+    
     /**
      * Displays the Scientist menu and handles related actions such as tracking and assessing orbits.
      */
@@ -63,10 +108,10 @@ public class RunSimulation {
             String choice = scanner.nextLine();
             if (choice.equals("1")) {
                 LoggerUtility.log("Scientist selected to track objects in space.");
-                trackObjectsMenu();
+                scientistTrackObjectsMenu();
             } else if (choice.equals("2")) {
                 LoggerUtility.log("Scientist selected to assess orbit status.");
-                OrbitStatus();
+                scientistOrbitStatusMenu();
             } else if (choice.equals("3")) {
                 LoggerUtility.log("Scientist returned to main menu.");
                 break;
@@ -151,7 +196,7 @@ public class RunSimulation {
     /**
      * Displays the submenu for selecting which type of space object to track.
      */
-    private static void trackObjectsMenu() {
+    private static void scientistTrackObjectsMenu() {
         System.out.println("\nTrack Objects:");
         System.out.println("1. Rocket Body\n2. Debris\n3. Payload\n4. Unknown\n5. Back");
         String option = scanner.nextLine();
@@ -180,7 +225,7 @@ public class RunSimulation {
     /**
      * Displays the submenu for assessing orbit status and selecting tracking methods.
      */
-    private static void OrbitStatus() {
+    private static void scientistOrbitStatusMenu() {
         System.out.println("\nAssess Orbit Status:");
         System.out.println("1. Track Objects in LEO\n2. Assess if debris is still in orbit\n3. Back");
         String option = scanner.nextLine();

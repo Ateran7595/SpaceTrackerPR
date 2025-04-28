@@ -1,6 +1,0 @@
-[2025-04-26 17:05:18] Scientist selected to track objects in space.
-[2025-04-26 17:05:19] Scientist queried all Rocket Bodies.
-[2025-04-26 17:05:21] Scientist returned to main menu.
-[2025-04-26 17:05:21] Session ended by user.
-[2025-04-26 17:05:23] System successfully loaded data from rso_metrics.csv.
-[2025-04-26 17:07:43] Session ended by user.

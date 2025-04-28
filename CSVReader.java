@@ -99,6 +99,8 @@ public class CSVReader {
         }
     }
 
+    public void loadUsers(){} // The fuction which will help to read the new users.csv created by admin 
+
     private int getInt(String[] parts, Map<String, Integer> map, String key) {
         String value = getStr(parts, map, key);
         // Debug: Show the value retrieved for the key
