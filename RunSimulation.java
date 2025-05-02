@@ -4,7 +4,7 @@ import java.io.*;
 /**
  * The {@code RunSimulation} class serves as the entry point for the space object tracking simulation.
  * It provides a console-based menu for different types of users such as Scientists, 
- * Space Agency Representatives, Policymakers, and Administrators to interact with the system.
+ * Space Agency Representatives, and Administrators to interact with the system.
  * 
  * <p>The system loads data from a CSV file and utilizes the {@link TrackingSystem} to provide tracking features.</p>
  */
@@ -23,7 +23,7 @@ public class RunSimulation {
 
         while (true) {
             System.out.println("\nSelect user type:");
-            System.out.println("1. Scientist\n2. Space Agency Rep\n3. Policymaker\n4. Administrator\n5. EXIT");
+            System.out.println("1. Scientist\n2. Space Agency Rep\n3. Administrator\n4. EXIT");
             // Try adding self explanatory inputs //
             String choice = scanner.nextLine();
 
@@ -41,18 +41,12 @@ public class RunSimulation {
                     }
                     break;
                 case "3":
-                    if (login("policy")) {
-                        LoggerUtility.log("Policymaker accessed the system.");
-                        policyMakerMenu();
-                    }
-                    break;
-                case "4":
                     if (login("admin")) {
                         LoggerUtility.log("Administrator accessed the system.");
                         administratorMenu();
                     }
                     break;
-                case "5":
+                case "4":
                     LoggerUtility.log("Session ended by user.");
                     System.out.println("Exiting...");
                     return;
@@ -151,29 +145,6 @@ public class RunSimulation {
     }
 
     /**
-     * Displays the Policymaker menu and handles related (currently unimplemented) actions.
-     */
-    private static void policyMakerMenu() {
-        while (true) {
-            System.out.println("\nPolicy Maker Menu:");
-            System.out.println("1. Review Reports on Debris Impact\n2. Assess Risk Levels for Future Space Missions\n3. Back");
-            String choice = scanner.nextLine();
-            if (choice.equals("1")) {
-                LoggerUtility.log("Policymaker attempted to review reports on debris impact (not yet implemented).");
-                System.out.println("Error: Functionality Under Development");
-            } else if (choice.equals("2")) {
-                LoggerUtility.log("Policymaker attempted to assess risk levels (not yet implemented).");
-                System.out.println("Error: Functionality Under Development");
-            } else if (choice.equals("3")) {
-                LoggerUtility.log("Policymaker returned to main menu.");
-                break;
-            } else {
-                System.out.println("Invalid input.");
-            }
-        }
-    }
-
-    /**
      * Displays the Administrator menu and handles user management features (currently unimplemented).
      */
     private static void administratorMenu() {
@@ -258,7 +229,7 @@ public class RunSimulation {
     private static void loadDataFromCSV() {
         CSVReader reader = new CSVReader();
         try {
-            reader.loadObjects("rso_metrics.csv", trackingSystem);
+            reader.loadObjects("rso_metrics_columns_jumbled.csv", trackingSystem);
             LoggerUtility.log("System successfully loaded data from rso_metrics.csv.");
             System.out.println("Data loaded successfully from rso_metrics.csv.");
         } catch (IOException e) {
