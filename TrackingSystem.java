@@ -99,24 +99,29 @@ public class TrackingSystem {
         for (SpaceObject obj : spaceObjects) {
             boolean hasOrbitType = obj.getOrbitType() != null && !obj.getOrbitType().equalsIgnoreCase("unknown");
             boolean hasLongitude = obj.getLongitude() != 0.0;
-            boolean hasConjunction = obj instanceof Debris && ((Debris) obj).getConjunctionCount() >= 1;
-    
+            boolean hasConjunction = true;  // assume true unless Debris
+        
+            if (obj instanceof Debris) {
+                hasConjunction = ((Debris) obj).getConjunctionCount() >= 1;
+            }
+        
             boolean stillInOrbit = hasOrbitType && hasLongitude && obj.getDaysOld() < 15000 && hasConjunction;
             obj.setStillInOrbit(stillInOrbit);
-    
+        
             double drift = Math.abs(obj.getLongitude() - obj.getAvgLongitude());
             String risk;
             if (drift > 50) risk = "High";
             else if (drift > 10) risk = "Moderate";
             else risk = "Low";
             obj.setRiskLevel(risk);
-    
+        
             if (stillInOrbit) inOrbitCount++;
             else {
                 exitedCount++;
                 exitedDebris.add(obj);
             }
         }
+        
     
         exportToCSV("assessed_debris.csv");
         writeExitedDebrisReport("exited_debris_report.txt", inOrbitCount, exitedCount, exitedDebris);
