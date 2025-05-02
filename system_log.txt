@@ -1,0 +1,150 @@
+[2025-04-28 21:15:56] System successfully loaded data from rso_metrics.csv.
+[2025-04-28 21:16:23] scientist login failed (user not found).
+[2025-04-28 21:16:24] Session ended by user.
+[2025-04-28 21:17:16] System successfully loaded data from rso_metrics.csv.
+[2025-04-28 21:17:27] scientist login failed (user not found).
+[2025-04-28 21:17:28] Session ended by user.
+[2025-04-28 21:17:36] System successfully loaded data from rso_metrics.csv.
+[2025-04-28 21:17:44] Session ended by user.
+[2025-04-30 14:20:27] System successfully loaded data from rso_metrics.csv.
+[2025-04-30 14:20:50] scientist login successful.
+[2025-04-30 14:20:50] Scientist accessed the system.
+[2025-04-30 14:20:57] Scientist selected to track objects in space.
+[2025-04-30 14:21:04] Scientist queried all Unknown objects.
+[2025-04-30 14:21:10] Scientist selected to assess orbit status.
+[2025-04-30 14:21:21] Scientist tracked objects in Low Earth Orbit (LEO).
+[2025-04-30 14:21:37] Scientist returned to main menu.
+[2025-04-30 14:21:51] admin login successful.
+[2025-04-30 14:21:51] Administrator accessed the system.
+[2025-04-30 14:22:43] Administrator returned to main menu.
+[2025-04-30 14:22:45] Scientist accessed the system.
+[2025-04-30 14:22:49] Scientist returned to main menu.
+[2025-04-30 14:22:50] Session ended by user.
+[2025-04-30 14:22:52] System successfully loaded data from rso_metrics.csv.
+[2025-04-30 14:23:06] scientist login successful.
+[2025-04-30 14:23:06] Scientist accessed the system.
+[2025-04-30 14:23:11] Scientist returned to main menu.
+[2025-04-30 14:23:12] Scientist accessed the system.
+[2025-04-30 14:23:19] Scientist returned to main menu.
+[2025-04-30 14:23:28] agency login failed (user not found).
+[2025-04-30 14:23:42] Session ended by user.
+[2025-05-02 14:14:45] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 14:16:34] admin login failed (user not found).
+[2025-05-02 14:17:17] admin login failed (user not found).
+[2025-05-02 14:17:33] admin login successful.
+[2025-05-02 14:17:33] Administrator accessed the system.
+[2025-05-02 14:17:41] Administrator returned to main menu.
+[2025-05-02 14:18:11] scientist login failed (user not found).
+[2025-05-02 14:18:23] Administrator accessed the system.
+[2025-05-02 14:19:16] Administrator returned to main menu.
+[2025-05-02 14:19:17] Session ended by user.
+[2025-05-02 14:19:22] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 14:19:32] admin login failed (user not found).
+[2025-05-02 14:19:45] admin login successful.
+[2025-05-02 14:19:45] Administrator accessed the system.
+[2025-05-02 14:22:32] Administrator returned to main menu.
+[2025-05-02 14:22:34] Session ended by user.
+[2025-05-02 15:03:18] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 15:04:01] admin login failed (user not found).
+[2025-05-02 15:04:07] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 15:04:19] Session ended by user.
+[2025-05-02 15:04:26] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 15:04:32] Session ended by user.
+[2025-05-02 15:04:46] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 15:05:12] Session ended by user.
+[2025-05-02 15:05:16] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 15:05:24] scientist login failed (user not found).
+[2025-05-02 15:05:29] Session ended by user.
+[2025-05-02 15:05:31] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 15:06:28] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 15:06:33] Session ended by user.
+[2025-05-02 15:09:30] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 15:11:24] scientist login successful.
+[2025-05-02 15:11:24] Scientist accessed the system.
+[2025-05-02 15:11:25] Scientist selected to track objects in space.
+[2025-05-02 15:11:26] Scientist queried all Rocket Bodies.
+[2025-05-02 15:11:48] Scientist selected to assess orbit status.
+[2025-05-02 15:11:49] Scientist tracked objects in Low Earth Orbit (LEO).
+[2025-05-02 15:12:04] Scientist selected to assess orbit status.
+[2025-05-02 15:12:09] Scientist assessed if debris is still in orbit.
+[2025-05-02 15:15:16] Scientist returned to main menu.
+[2025-05-02 15:15:34] agency login successful.
+[2025-05-02 15:15:34] Space Agency Representative accessed the system.
+[2025-05-02 15:15:39] Space Agency tried to analyze long-term impact (not yet implemented).
+[2025-05-02 15:15:40] Space Agency tried to generate density reports (not yet implemented).
+[2025-05-02 15:15:41] Space Agency returned to main menu.
+[2025-05-02 15:15:46] admin login successful.
+[2025-05-02 15:15:46] Administrator accessed the system.
+[2025-05-02 15:16:30] Administrator returned to main menu.
+[2025-05-02 15:16:32] Session ended by user.
+[2025-05-02 15:17:12] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 15:17:23] scientist login successful.
+[2025-05-02 15:17:23] Scientist accessed the system.
+[2025-05-02 15:17:25] Scientist selected to track objects in space.
+[2025-05-02 15:17:26] Scientist queried all Rocket Bodies.
+[2025-05-02 15:17:42] Scientist returned to main menu.
+[2025-05-02 15:17:46] Session ended by user.
+[2025-05-02 15:17:58] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 15:18:06] scientist login successful.
+[2025-05-02 15:18:06] Scientist accessed the system.
+[2025-05-02 15:18:07] Scientist selected to track objects in space.
+[2025-05-02 15:18:07] Scientist queried all Rocket Bodies.
+[2025-05-02 15:18:12] Scientist returned to main menu.
+[2025-05-02 15:18:12] Session ended by user.
+[2025-05-02 15:18:20] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 15:18:30] agency login failed (wrong password).
+[2025-05-02 15:18:43] agency login successful.
+[2025-05-02 15:18:43] Space Agency Representative accessed the system.
+[2025-05-02 15:18:45] Space Agency tried to analyze long-term impact (not yet implemented).
+[2025-05-02 15:18:46] Space Agency tried to generate density reports (not yet implemented).
+[2025-05-02 15:18:46] Space Agency returned to main menu.
+[2025-05-02 15:18:52] scientist login failed (wrong password).
+[2025-05-02 15:18:59] scientist login successful.
+[2025-05-02 15:18:59] Scientist accessed the system.
+[2025-05-02 15:19:00] Scientist selected to track objects in space.
+[2025-05-02 15:19:01] Scientist queried all Debris.
+[2025-05-02 15:19:08] Scientist selected to assess orbit status.
+[2025-05-02 15:19:09] Scientist tracked objects in Low Earth Orbit (LEO).
+[2025-05-02 15:19:30] Scientist selected to assess orbit status.
+[2025-05-02 15:19:32] Scientist assessed if debris is still in orbit.
+[2025-05-02 15:21:24] Scientist returned to main menu.
+[2025-05-02 15:21:25] Session ended by user.
+[2025-05-02 15:48:19] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 15:48:26] scientist login successful.
+[2025-05-02 15:48:26] Scientist accessed the system.
+[2025-05-02 15:48:29] Scientist selected to assess orbit status.
+[2025-05-02 15:48:29] Scientist tracked objects in Low Earth Orbit (LEO).
+[2025-05-02 16:01:53] Scientist returned to main menu.
+[2025-05-02 16:01:54] Session ended by user.
+[2025-05-02 16:01:57] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 16:02:03] scientist login successful.
+[2025-05-02 16:02:03] Scientist accessed the system.
+[2025-05-02 16:02:04] Scientist selected to assess orbit status.
+[2025-05-02 16:02:06] Scientist assessed if debris is still in orbit.
+[2025-05-02 16:05:15] Scientist returned to main menu.
+[2025-05-02 16:05:15] Session ended by user.
+[2025-05-02 16:05:18] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 16:05:24] agency login failed (user not found).
+[2025-05-02 16:05:30] agency login failed (user not found).
+[2025-05-02 16:05:36] scientist login successful.
+[2025-05-02 16:05:36] Scientist accessed the system.
+[2025-05-02 16:05:37] Scientist selected to assess orbit status.
+[2025-05-02 16:05:41] Scientist assessed if debris is still in orbit.
+[2025-05-02 16:05:50] Scientist selected to assess orbit status.
+[2025-05-02 16:05:53] Scientist assessed if debris is still in orbit.
+[2025-05-02 16:06:00] Scientist selected to assess orbit status.
+[2025-05-02 16:06:01] Scientist assessed if debris is still in orbit.
+[2025-05-02 16:06:09] Scientist returned to main menu.
+[2025-05-02 16:06:10] Session ended by user.
+[2025-05-02 16:06:18] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 16:06:24] scientist login successful.
+[2025-05-02 16:06:24] Scientist accessed the system.
+[2025-05-02 16:06:25] Scientist selected to assess orbit status.
+[2025-05-02 16:06:25] Scientist assessed if debris is still in orbit.
+[2025-05-02 16:06:44] Scientist returned to main menu.
+[2025-05-02 16:06:44] Session ended by user.
+[2025-05-02 16:29:06] System successfully loaded data from rso_metrics.csv.
+[2025-05-02 16:29:12] scientist login successful.
+[2025-05-02 16:29:12] Scientist accessed the system.
+[2025-05-02 16:29:13] Scientist selected to assess orbit status.
+[2025-05-02 16:29:13] Scientist assessed if debris is still in orbit.

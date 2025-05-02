@@ -1,0 +1,62 @@
+Orbit Assessment Report
+========================
+In-Orbit Count: 42
+Exited Count: 56
+
+Exited Debris Details:
+Record ID: 10096, Name: SL-14 R/B, Country: CIS, Orbit Type: LEO, Launch Year: 1977, Launch Site: PKMTR, Longitude: -70.95, Avg Longitude: -45.06, Geohash: "62.925556,40.577778", Days Old: 17390
+Record ID: 10436, Name: COSMOS 839 DEB, Country: CIS, Orbit Type: LEO, Launch Year: 1976, Launch Site: PKMTR, Longitude: 29.40, Avg Longitude: -32.93, Geohash: "62.925556,40.577778", Days Old: 17741
+Record ID: 11888, Name: SL-6 R/B(2), Country: CIS, Orbit Type: HEO, Launch Year: 1980, Launch Site: PKMTR, Longitude: 126.92, Avg Longitude: -19.62, Geohash: "62.925556,40.577778", Days Old: 16286
+Record ID: 12529, Name: DELTA 1 DEB, Country: US, Orbit Type: LEO, Launch Year: 1976, Launch Site: AFWTR, Longitude: -49.98, Avg Longitude: 63.25, Geohash: "34.742221,-120.57243", Days Old: 17720
+Record ID: 13610, Name: SL-12 R/B(2), Country: CIS, Orbit Type: MEO, Launch Year: 1982, Launch Site: TTMTR, Longitude: 85.42, Avg Longitude: 128.26, Geohash: "45.965,63.305", Days Old: 15454
+Record ID: 21249, Name: SL-8 DEB, Country: CIS, Orbit Type: LEO, Launch Year: 1991, Launch Site: PKMTR, Longitude: -162.53, Avg Longitude: -98.07, Geohash: "62.925556,40.577778", Days Old: 12409
+Record ID: 23097, Name: USA 103, Country: US, Orbit Type: Unknown Orbit Category, Launch Year: 1994, Launch Site: AFETR, Longitude: 0.00, Avg Longitude: 0.00, Geohash: "28.4917337,-80.5825555", Days Old: 11233
+Record ID: 26005, Name: SL-14 DEB, Country: CIS, Orbit Type: LEO, Launch Year: 1991, Launch Site: PKMTR, Longitude: 9.34, Avg Longitude: 22.61, Geohash: "62.925556,40.577778", Days Old: 12181
+Record ID: 29210, Name: SCOUT G-1 DEB, Country: US, Orbit Type: LEO, Launch Year: 1987, Launch Site: AFWTR, Longitude: 0.00, Avg Longitude: 0.00, Geohash: "34.742221,-120.57243", Days Old: 13654
+Record ID: 29539, Name: CZ-4B DEB, Country: PRC, Orbit Type: LEO, Launch Year: 2006, Launch Site: TSC, Longitude: 26.25, Avg Longitude: 127.11, Geohash: "38.849086,111.608497", Days Old: 6857
+Record ID: 31518, Name: FENGYUN 1C DEB, Country: PRC, Orbit Type: LEO, Launch Year: 1999, Launch Site: TSC, Longitude: 0.00, Avg Longitude: 0.00, Geohash: "38.849086,111.608497", Days Old: 9400
+Record ID: 32558, Name: DELTA 4H DEB, Country: US, Orbit Type: Unknown Orbit Category, Launch Year: 2007, Launch Site: AFETR, Longitude: 0.00, Avg Longitude: 0.00, Geohash: "28.4917337,-80.5825555", Days Old: 6293
+Record ID: 35350, Name: PSLV DEB, Country: IND, Orbit Type: LEO, Launch Year: 2001, Launch Site: SRI, Longitude: -19.90, Avg Longitude: 94.22, Geohash: "13.7178,80.2", Days Old: 8504
+Record ID: 35670, Name: COSMOS 2251 DEB, Country: CIS, Orbit Type: LEO, Launch Year: 1993, Launch Site: PKMTR, Longitude: 40.00, Avg Longitude: 50.95, Geohash: "62.925556,40.577778", Days Old: 11554
+Record ID: 39350, Name: CZ-3C DEB, Country: PRC, Orbit Type: HEO, Launch Year: 2010, Launch Site: XSC, Longitude: -133.58, Avg Longitude: -101.91, Geohash: "28.246017,102.026556", Days Old: 5208
+Record ID: 39645, Name: COSMOS 1867 COOLANT, Country: CIS, Orbit Type: LEO, Launch Year: 1987, Launch Site: TTMTR, Longitude: 142.55, Avg Longitude: 26.19, Geohash: "45.965,63.305", Days Old: 13722
+Record ID: 46525, Name: FREGAT DEB, Country: CIS, Orbit Type: LEO, Launch Year: 2011, Launch Site: TTMTR, Longitude: 0.00, Avg Longitude: 0.00, Geohash: "45.965,63.305", Days Old: 4948
+Record ID: 4821, Name: THORAD AGENA D DEB, Country: US, Orbit Type: LEO, Launch Year: 1970, Launch Site: AFWTR, Longitude: 178.21, Avg Longitude: -72.05, Geohash: "34.742221,-120.57243", Days Old: 20024
+Record ID: 50802, Name: COSMOS 2499 DEB, Country: CIS, Orbit Type: LEO, Launch Year: 2014, Launch Site: PKMTR, Longitude: 0.00, Avg Longitude: 84.38, Geohash: "62.925556,40.577778", Days Old: 3908
+Record ID: 61354, Name: CZ-6A DEB, Country: PRC, Orbit Type: LEO, Launch Year: 2024, Launch Site: TSC, Longitude: 0.00, Avg Longitude: 32.23, Geohash: "38.849086,111.608497", Days Old: 180
+Record ID: 61819, Name: CZ-6A DEB, Country: PRC, Orbit Type: LEO, Launch Year: 2024, Launch Site: TSC, Longitude: 0.00, Avg Longitude: 22.60, Geohash: "38.849086,111.608497", Days Old: 180
+Record ID: 12542, Name: DELTA 1 DEB, Country: US, Orbit Type: LEO, Launch Year: 1976, Launch Site: AFWTR, Longitude: -32.49, Avg Longitude: 127.19, Geohash: "34.742221,-120.57243", Days Old: 17720
+Record ID: 21453, Name: DELTA 1 DEB, Country: US, Orbit Type: LEO, Launch Year: 1975, Launch Site: AFWTR, Longitude: 136.69, Avg Longitude: -145.41, Geohash: "34.742221,-120.57243", Days Old: 18133
+Record ID: 23479, Name: SL-19 DEB, Country: CIS, Orbit Type: LEO, Launch Year: 1994, Launch Site: TTMTR, Longitude: 164.32, Avg Longitude: 35.19, Geohash: "45.965,63.305", Days Old: 10996
+Record ID: 26222, Name: CZ-4 DEB, Country: PRC, Orbit Type: LEO, Launch Year: 1999, Launch Site: TSC, Longitude: -158.55, Avg Longitude: -177.56, Geohash: "38.849086,111.608497", Days Old: 9243
+Record ID: 27729, Name: DELTA 1 DEB, Country: US, Orbit Type: LEO, Launch Year: 1977, Launch Site: AFETR, Longitude: 156.61, Avg Longitude: -46.53, Geohash: "28.4917337,-80.5825555", Days Old: 17370
+Record ID: 28039, Name: ARIANE 44L DEB, Country: FR, Orbit Type: HEO, Launch Year: 1991, Launch Site: FRGUI, Longitude: -109.61, Avg Longitude: 33.17, Geohash: "5.222222,-52.773611", Days Old: 12437
+Record ID: 30750, Name: FENGYUN 1C DEB, Country: PRC, Orbit Type: LEO, Launch Year: 1999, Launch Site: TSC, Longitude: -131.09, Avg Longitude: 149.02, Geohash: "38.849086,111.608497", Days Old: 9400
+Record ID: 38296, Name: CZ-4C DEB, Country: PRC, Orbit Type: LEO, Launch Year: 2010, Launch Site: TSC, Longitude: -91.66, Avg Longitude: -30.68, Geohash: "38.849086,111.608497", Days Old: 5204
+Record ID: 38576, Name: BREEZE-M DEB, Country: CIS, Orbit Type: HEO, Launch Year: 2008, Launch Site: TTMTR, Longitude: -26.56, Avg Longitude: -78.82, Geohash: "45.965,63.305", Days Old: 6169
+Record ID: 39840, Name: SL-8 DEB, Country: CIS, Orbit Type: LEO, Launch Year: 1991, Launch Site: PKMTR, Longitude: -170.95, Avg Longitude: -112.61, Geohash: "62.925556,40.577778", Days Old: 12409
+Record ID: 41009, Name: FENGYUN 1C DEB, Country: PRC, Orbit Type: LEO, Launch Year: 1999, Launch Site: TSC, Longitude: 0.00, Avg Longitude: 0.00, Geohash: "38.849086,111.608497", Days Old: 9400
+Record ID: 41262, Name: NOAA 16 DEB, Country: US, Orbit Type: LEO, Launch Year: 2000, Launch Site: AFWTR, Longitude: -19.50, Avg Longitude: -11.57, Geohash: "34.742221,-120.57243", Days Old: 8900
+Record ID: 41280, Name: NOAA 16 DEB, Country: US, Orbit Type: LEO, Launch Year: 2000, Launch Site: AFWTR, Longitude: 65.61, Avg Longitude: 132.85, Geohash: "34.742221,-120.57243", Days Old: 8900
+Record ID: 52828, Name: ATLAS 5 CENTAUR DEB, Country: US, Orbit Type: HEO, Launch Year: 2014, Launch Site: AFETR, Longitude: -17.66, Avg Longitude: 1.31, Geohash: "28.4917337,-80.5825555", Days Old: 3791
+Record ID: 55520, Name: CZ-6A DEB, Country: PRC, Orbit Type: LEO, Launch Year: 2022, Launch Site: TSC, Longitude: -18.74, Avg Longitude: 115.25, Geohash: "38.849086,111.608497", Days Old: 814
+Record ID: 55551, Name: CZ-6A DEB, Country: PRC, Orbit Type: LEO, Launch Year: 2022, Launch Site: TSC, Longitude: -1.73, Avg Longitude: 120.21, Geohash: "38.849086,111.608497", Days Old: 814
+Record ID: 6797, Name: ATLAS CENTAUR R/B, Country: US, Orbit Type: HEO, Launch Year: 1973, Launch Site: AFETR, Longitude: 20.97, Avg Longitude: 81.57, Geohash: "28.4917337,-80.5825555", Days Old: 18791
+Record ID: 10730, Name: DELTA 1 DEB, Country: US, Orbit Type: LEO, Launch Year: 1975, Launch Site: AFWTR, Longitude: -27.86, Avg Longitude: -80.30, Geohash: "34.742221,-120.57243", Days Old: 18197
+Record ID: 11667, Name: COSMOS 1150, Country: CIS, Orbit Type: LEO, Launch Year: 1980, Launch Site: PKMTR, Longitude: -81.82, Avg Longitude: -27.85, Geohash: "62.925556,40.577778", Days Old: 16456
+Record ID: 13460, Name: COSMOS 1275 DEB, Country: CIS, Orbit Type: LEO, Launch Year: 1981, Launch Site: PKMTR, Longitude: 164.02, Avg Longitude: -50.78, Geohash: "62.925556,40.577778", Days Old: 15949
+Record ID: 20626, Name: SL-16 DEB, Country: CIS, Orbit Type: LEO, Launch Year: 1990, Launch Site: TTMTR, Longitude: 73.32, Avg Longitude: -41.97, Geohash: "45.965,63.305", Days Old: 12675
+Record ID: 2700, Name: DELTA 1 DEB, Country: US, Orbit Type: LEO, Launch Year: 1965, Launch Site: AFETR, Longitude: 69.42, Avg Longitude: 102.43, Geohash: "28.4917337,-80.5825555", Days Old: 21638
+Record ID: 29301, Name: METEOR 2-17 DEB, Country: CIS, Orbit Type: LEO, Launch Year: 1988, Launch Site: PKMTR, Longitude: -141.58, Avg Longitude: 53.89, Geohash: "62.925556,40.577778", Days Old: 13518
+Record ID: 29922, Name: FENGYUN 1C DEB, Country: PRC, Orbit Type: LEO, Launch Year: 1999, Launch Site: TSC, Longitude: -21.85, Avg Longitude: -42.29, Geohash: "38.849086,111.608497", Days Old: 9400
+Record ID: 30005, Name: FENGYUN 1C DEB, Country: PRC, Orbit Type: LEO, Launch Year: 1999, Launch Site: TSC, Longitude: 132.55, Avg Longitude: -71.53, Geohash: "38.849086,111.608497", Days Old: 9400
+Record ID: 30155, Name: FENGYUN 1C DEB, Country: PRC, Orbit Type: LEO, Launch Year: 1999, Launch Site: TSC, Longitude: -137.89, Avg Longitude: 31.22, Geohash: "38.849086,111.608497", Days Old: 9400
+Record ID: 32119, Name: FENGYUN 1C DEB, Country: PRC, Orbit Type: LEO, Launch Year: 1999, Launch Site: TSC, Longitude: 156.15, Avg Longitude: -76.54, Geohash: "38.849086,111.608497", Days Old: 9400
+Record ID: 33558, Name: ARIANE 2 DEB, Country: FR, Orbit Type: HEO, Launch Year: 1989, Launch Site: FRGUI, Longitude: -166.74, Avg Longitude: 133.02, Geohash: "5.222222,-52.773611", Days Old: 13155
+Record ID: 33776, Name: IRIDIUM 33 DEB, Country: US, Orbit Type: LEO, Launch Year: 1997, Launch Site: TTMTR, Longitude: -161.53, Avg Longitude: -162.01, Geohash: "45.965,63.305", Days Old: 10003
+Record ID: 35796, Name: COSMOS 2251 DEB, Country: CIS, Orbit Type: LEO, Launch Year: 1993, Launch Site: PKMTR, Longitude: 130.75, Avg Longitude: 0.00, Geohash: "62.925556,40.577778", Days Old: 11554
+Record ID: 40862, Name: CZ-3C DEB, Country: PRC, Orbit Type: HEO, Launch Year: 2012, Launch Site: XSC, Longitude: 0.00, Avg Longitude: 0.00, Geohash: "28.246017,102.026556", Days Old: 4727
+Record ID: 48539, Name: SL-12 DEB, Country: CIS, Orbit Type: HEO, Launch Year: 2008, Launch Site: TTMTR, Longitude: 0.00, Avg Longitude: 0.00, Geohash: "45.965,63.305", Days Old: 5974
+Record ID: 5181, Name: SL-8 R/B, Country: CIS, Orbit Type: LEO, Launch Year: 1971, Launch Site: PKMTR, Longitude: 77.29, Avg Longitude: -144.68, Geohash: "62.925556,40.577778", Days Old: 19639
+Record ID: 52967, Name: ATLAS 5 CENTAUR DEB, Country: US, Orbit Type: HEO, Launch Year: 2018, Launch Site: AFETR, Longitude: 0.00, Avg Longitude: 0.00, Geohash: "28.4917337,-80.5825555", Days Old: 2300
+Record ID: 53093, Name: COSMOS 2251 DEB, Country: CIS, Orbit Type: LEO, Launch Year: 1993, Launch Site: PKMTR, Longitude: -1.03, Avg Longitude: 145.83, Geohash: "62.925556,40.577778", Days Old: 11554

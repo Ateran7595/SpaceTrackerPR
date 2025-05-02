@@ -37,12 +37,12 @@ public class UserManager {
         String username = scanner.nextLine();
         System.out.print("Enter new password: ");
         String password = scanner.nextLine();
-        System.out.print("Enter user type (scientist, agency, policy, admin): ");
+        System.out.print("Enter user type (scientist, agency, admin): ");
         String userType = scanner.nextLine().toLowerCase();
     
         // Validate userType to ensure it is one of the allowed types
         if (!isValidUserType(userType)) {
-            System.out.println("Invalid user type. Please enter one of the following: scientist, agency, policy, admin.");
+            System.out.println("Invalid user type. Please enter one of the following: scientist, agency, admin.");
             return;
         }
     
@@ -64,7 +64,7 @@ public class UserManager {
     
     // Helper method to validate the user type
     private static boolean isValidUserType(String userType) {
-        return userType.equals("scientist") || userType.equals("agency") || userType.equals("policy") || userType.equals("admin");
+        return userType.equals("scientist") || userType.equals("agency") || userType.equals("admin");
     }
     
 
