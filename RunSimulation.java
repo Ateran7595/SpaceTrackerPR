@@ -48,6 +48,7 @@ public class RunSimulation {
                     break;
                 case "4":
                     LoggerUtility.log("Session ended by user.");
+                    ReportWriter.writeUpdatedReport(trackingSystem.getAllObjects(), "updated_debris_report.csv");
                     System.out.println("Exiting...");
                     return;
                 default:
@@ -229,7 +230,7 @@ public class RunSimulation {
     private static void loadDataFromCSV() {
         CSVReader reader = new CSVReader();
         try {
-            reader.loadObjects("rso_metrics_columns_jumbled.csv", trackingSystem);
+            reader.loadObjects("rso_metrics.csv", trackingSystem);
             LoggerUtility.log("System successfully loaded data from rso_metrics.csv.");
             System.out.println("Data loaded successfully from rso_metrics.csv.");
         } catch (IOException e) {

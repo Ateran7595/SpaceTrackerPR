@@ -20,6 +20,20 @@ public abstract class SpaceObject {
     protected int daysOld;
     protected boolean stillInOrbit;
     protected String riskLevel;
+    private String hrrCategory;
+    private boolean nominated;
+    private String nominatedAt;
+    private boolean hasDossier;
+    private String lastUpdatedAt;
+    private String justification;
+    private String focusedAnalysis;
+    private int conjunctionCount;
+    private boolean unknownObject;
+    private int allManeuvers;
+    private int daysSinceOb;
+    private int recentManeuvers;
+    private double deltaV90Day;
+    private boolean hasSisterDebris;
 
     /**
      * Constructs a new {@code SpaceObject} with the given parameters.
@@ -91,6 +105,49 @@ public abstract class SpaceObject {
 
     /** @return Number of days since launch */
     public int getDaysOld() { return daysOld; }
+
+    public String getHRRCategory() { return hrrCategory; }
+    public void setHRRCategory(String hrrCategory) { this.hrrCategory = hrrCategory; }
+
+    public boolean isNominated() { return nominated; }
+    public void setNominated(boolean nominated) { this.nominated = nominated; }
+
+    public String getNominatedAt() { return nominatedAt; }
+    public void setNominatedAt(String nominatedAt) { this.nominatedAt = nominatedAt; }
+
+    public boolean hasDossier() { return hasDossier; }
+    public void setHasDossier(boolean hasDossier) { this.hasDossier = hasDossier; }
+
+    public String getLastUpdatedAt() { return lastUpdatedAt; }
+    public void setLastUpdatedAt(String lastUpdatedAt) { this.lastUpdatedAt = lastUpdatedAt; }
+
+    public String getJustification() { return justification; }
+    public void setJustification(String justification) { this.justification = justification; }
+
+    public String getFocusedAnalysis() { return focusedAnalysis; }
+    public void setFocusedAnalysis(String focusedAnalysis) { this.focusedAnalysis = focusedAnalysis; }
+
+    public int getConjunctionCount() { return conjunctionCount; }
+    public void setConjunctionCount(int conjunctionCount) { this.conjunctionCount = conjunctionCount; }
+
+    public boolean isUnknownObject() { return unknownObject; }
+    public void setUnknownObject(boolean unknownObject) { this.unknownObject = unknownObject; }
+
+    public int getAllManeuvers() { return allManeuvers; }
+    public void setAllManeuvers(int allManeuvers) { this.allManeuvers = allManeuvers; }
+
+    public int getDaysSinceOb() { return daysSinceOb; }
+    public void setDaysSinceOb(int daysSinceOb) { this.daysSinceOb = daysSinceOb; }
+
+    public int getRecentManeuvers() { return recentManeuvers; }
+    public void setRecentManeuvers(int recentManeuvers) { this.recentManeuvers = recentManeuvers; }
+
+    public double getDeltaV90Day() { return deltaV90Day; }
+    public void setDeltaV90Day(double deltaV90Day) { this.deltaV90Day = deltaV90Day; }
+
+    public boolean hasSisterDebris() { return hasSisterDebris; }
+    public void setHasSisterDebris(boolean hasSisterDebris) { this.hasSisterDebris = hasSisterDebris; }
+
 
     /**
      * Returns a summary of key details about the space object.

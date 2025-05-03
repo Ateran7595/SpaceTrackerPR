@@ -2,7 +2,6 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.regex.*;
-
 /**
  * The {@code CSVReader} class is responsible for reading satellite and debris data
  * from a CSV file and populating a {@link TrackingSystem} with the parsed objects.
@@ -28,7 +27,7 @@ public class CSVReader {
             }
 
             // Debug: Print column mappings
-            System.out.println("Column Index Map: " + columnIndex);
+            //System.out.println("Column Index Map: " + columnIndex);
 
             String line;
             while ((line = br.readLine()) != null) {
@@ -39,18 +38,10 @@ public class CSVReader {
                 String[] parts = parseCSVLine(line);
 
                 // Debug: Print parsed line (check if the parts are split correctly)
-                System.out.println("Parsed Line: " + Arrays.toString(parts));  // Debug output
+                //System.out.println("Parsed Line: " + Arrays.toString(parts));  // Debug output
 
                 try {
-                    // Debug: Check the column index for 'record_id'
-                    Integer recordIdIndex = columnIndex.get("record_id");
-                    System.out.println("record_id index: " + recordIdIndex);  // Debug line
-
-                    // Get the record_id and other fields
                     int recordId = getInt(parts, columnIndex, "record_id");
-                    System.out.println("Record ID: " + recordId); // Debugging line to check the parsed ID
-
-                    // Continue parsing the rest of the columns
                     int noradId = getInt(parts, columnIndex, "norad_cat_id");
                     String name = getStr(parts, columnIndex, "satellite_name");
                     String country = getStr(parts, columnIndex, "country");
@@ -65,8 +56,8 @@ public class CSVReader {
                     int conjunctionCount = getInt(parts, columnIndex, "conjunction_count");
 
                     // Debug: Show what's being parsed
-                    System.out.printf("Parsed: ID=%d, DaysOld=%d, Name=%s, Type=%s%n",
-                            recordId, daysOld, name, objectType);
+                    // System.out.printf("Parsed: ID=%d, DaysOld=%d, Name=%s, Type=%s%n",
+                    //         recordId, daysOld, name, objectType);
 
                     // Create the SpaceObject based on the object type
                     SpaceObject obj;
@@ -102,7 +93,7 @@ public class CSVReader {
     private int getInt(String[] parts, Map<String, Integer> map, String key) {
         String value = getStr(parts, map, key);
         // Debug: Show the value retrieved for the key
-        System.out.println("Retrieved value for " + key + ": " + value); // Debug line
+        //System.out.println("Retrieved value for " + key + ": " + value); // Debug line
         try {
             return value.isEmpty() ? 0 : Integer.parseInt(value);
         } catch (NumberFormatException e) {
