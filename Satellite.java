@@ -5,6 +5,7 @@
  */
 public class Satellite extends SpaceObject {
 
+    private int conjunctionCount;
     /**
      * Constructs a new {@code Satellite} object with the specified attributes.
      *
@@ -23,11 +24,20 @@ public class Satellite extends SpaceObject {
      */
     public Satellite(int recordId, int noradId, String name, String country, String orbitType, String objectType,
                      int launchYear, String launchSite, double longitude, double avgLongitude,
-                     String geoHash, int daysOld) {
+                     String geoHash, int daysOld, int conjunctionCount) {
         super(recordId, noradId, name, country, orbitType, objectType, launchYear, launchSite,
               longitude, avgLongitude, geoHash, daysOld);
+        this.conjunctionCount = conjunctionCount;
     }
 
+
+    public int getConjunctionCount() {
+        return conjunctionCount;
+    }
+    
+    public void setConjunctionCount(int conjunctionCount) {
+        this.conjunctionCount = conjunctionCount;
+    }
     /**
      * Returns the type of object as "Payload".
      *

@@ -68,15 +68,15 @@ public class CSVReader {
                             break;
                         case "PAYLOAD":
                             obj = new Satellite(recordId, noradId, name, country, orbitType, objectType,
-                                    launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
+                                    launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld, conjunctionCount);
                             break;
                         case "ROCKET BODY":
                             obj = new RocketBody(recordId, noradId, name, country, orbitType, objectType,
-                                    launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
+                                    launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld, conjunctionCount);
                             break;
                         default:
                             obj = new UnknownObject(recordId, noradId, name, country, orbitType, objectType,
-                                    launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
+                                    launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld, conjunctionCount);
                             break;
                     }
 

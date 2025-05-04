@@ -131,11 +131,17 @@ public class RunSimulation {
             System.out.println("1. Analyze Long-Term Impact\n2. Generate Density Reports\n3. Back");
             String choice = scanner.nextLine();
             if (choice.equals("1")) {
-                LoggerUtility.log("Space Agency tried to analyze long-term impact (not yet implemented).");
-                System.out.println("Error: Functionality Under Development");
+                LoggerUtility.log("Space Agency analyzed long-term impact.");
+                trackingSystem.analyzeLongTermImpact();
+                break;
             } else if (choice.equals("2")) {
-                LoggerUtility.log("Space Agency tried to generate density reports (not yet implemented).");
-                System.out.println("Error: Functionality Under Development");
+                System.out.print("Enter minimum longitude: ");
+                double minLon = Double.parseDouble(scanner.nextLine());
+                System.out.print("Enter maximum longitude: ");
+                double maxLon = Double.parseDouble(scanner.nextLine());
+                LoggerUtility.log("Space Agency generated density report.");
+                trackingSystem.generateDensityReport(minLon, maxLon);
+                break;
             } else if (choice.equals("3")) {
                 LoggerUtility.log("Space Agency returned to main menu.");
                 break;

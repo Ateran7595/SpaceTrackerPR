@@ -198,4 +198,49 @@ public class TrackingSystem {
             e.printStackTrace();
         }
     }
+
+    public void generateDensityReport(double minLongitude, double maxLongitude) {
+        System.out.printf("\nGenerating density report for longitude range %.2f to %.2f...\n", minLongitude, maxLongitude);
+        int count = 0;
+    
+        System.out.printf("%-10s %-25s %-15s %-12s %-12s %-15s\n", 
+            "RecordID", "Satellite Name", "Country", "Orbit Type", 
+            "Launch Year", "Object Type");
+    
+        for (SpaceObject obj : spaceObjects) {
+            double lon = obj.getLongitude();
+            if (lon >= minLongitude && lon <= maxLongitude) {
+                count++;
+                System.out.printf("%-10s %-25s %-15s %-12s %-12s %-15s\n", 
+                    obj.getRecordId(), obj.getSatelliteName(), obj.getCountry(), 
+                    obj.getOrbitType(), obj.getLaunchYear(), obj.getObjectType());
+            }
+        }
+    
+        System.out.println("Total objects in range: " + count);
+    }
+
+    public void analyzeLongTermImpact() {
+        System.out.println("Analyzing Long-Term Impact for LEO objects...");
+        System.out.printf("%-10s %-25s %-12s %-12s %-15s %-10s %-20s%n",
+            "RecordID", "Satellite Name", "Country", "Orbit Type", "Object Type", "Days Old", "Conjunction Count");
+    
+        int count = 0; // Counter to track matches
+        for (SpaceObject obj : spaceObjects) {
+            if (obj.getOrbitType().equalsIgnoreCase("LEO") &&
+                obj.getDaysOld() > 200 &&
+                obj.getConjunctionCount() > 0) {
+    
+                count++;
+                System.out.printf("%-10s %-25s %-12s %-12s %-15s %-10d %-20d%n",
+                    obj.getRecordId(), obj.getSatelliteName(), obj.getCountry(),
+                    obj.getOrbitType(), obj.getObjectType(), obj.getDaysOld(), obj.getConjunctionCount());
+            }
+        }
+    
+        if (count == 0) {
+            System.out.println("No LEO objects found with Days Old > 200 and Conjunction Count > 0.");
+        }
+    }
+    
 }
