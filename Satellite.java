@@ -1,11 +1,11 @@
 /**
  * The {@code Satellite} class represents a satellite in space. It is a subclass of {@link SpaceObject} 
- * and contains information specific to satellites, such as their record ID, NORAD ID, satellite name, 
- * country of origin, orbit type, and other relevant attributes.
+ * and implements the {@link Analyzable} interface to allow for analytical operations.
  */
-public class Satellite extends SpaceObject {
+public class Satellite extends SpaceObject implements Analyzable {
 
     private int conjunctionCount;
+
     /**
      * Constructs a new {@code Satellite} object with the specified attributes.
      *
@@ -21,6 +21,7 @@ public class Satellite extends SpaceObject {
      * @param avgLongitude the average longitude of the satellite
      * @param geoHash the geohash representing the location of the satellite
      * @param daysOld the number of days since the satellite was launched
+     * @param conjunctionCount the number of recorded conjunctions
      */
     public Satellite(int recordId, int noradId, String name, String country, String orbitType, String objectType,
                      int launchYear, String launchSite, double longitude, double avgLongitude,
@@ -30,21 +31,32 @@ public class Satellite extends SpaceObject {
         this.conjunctionCount = conjunctionCount;
     }
 
-
+    @Override
     public int getConjunctionCount() {
         return conjunctionCount;
     }
-    
+
     public void setConjunctionCount(int conjunctionCount) {
         this.conjunctionCount = conjunctionCount;
     }
-    /**
-     * Returns the type of object as "Payload".
-     *
-     * @return the type of object, which is "Payload"
-     */
+
     @Override
     public String getObjectType() {
         return "Payload";
+    }
+
+    @Override
+    public int getDaysOld() {
+        return super.getDaysOld();
+    }
+
+    @Override
+    public String getOrbitType() {
+        return super.getOrbitType();
+    }
+
+    @Override
+    public String getSatelliteName() {
+        return super.getSatelliteName(); // assuming SpaceObject has getName()
     }
 }

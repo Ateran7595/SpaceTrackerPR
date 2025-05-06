@@ -1,9 +1,9 @@
 /**
  * The {@code Debris} class represents a space object classified as orbital debris.
- * It extends the {@link SpaceObject} class and includes additional data such as the
- * number of conjunctions this object has had with other space objects.
+ * It extends the {@link SpaceObject} class and implements the {@link Analyzable} interface
+ * to support analysis features such as conjunctions and age.
  */
-public class Debris extends SpaceObject {
+public class Debris extends SpaceObject implements Analyzable {
 
     /** The number of conjunctions (close approaches) this debris object has had. */
     private int conjunctionCount;
@@ -38,6 +38,7 @@ public class Debris extends SpaceObject {
      *
      * @return the conjunction count
      */
+    @Override
     public int getConjunctionCount() {
         return conjunctionCount;
     }
@@ -59,5 +60,29 @@ public class Debris extends SpaceObject {
     @Override
     public String getObjectType() {
         return "Debris";
+    }
+
+    /**
+     * Returns the number of days since launch.
+     */
+    @Override
+    public int getDaysOld() {
+        return super.getDaysOld();
+    }
+
+    /**
+     * Returns the orbit type.
+     */
+    @Override
+    public String getOrbitType() {
+        return super.getOrbitType();
+    }
+
+    /**
+     * Returns the name of the object (used as satellite name in analysis).
+     */
+    @Override
+    public String getSatelliteName() {
+        return super.getSatelliteName(); // assuming SpaceObject has getName()
     }
 }
