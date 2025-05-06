@@ -1,7 +1,7 @@
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.regex.*;
+// import java.util.regex.*;
 /**
  * The {@code CSVReader} class is responsible for reading satellite and debris data
  * from a CSV file and populating a {@link TrackingSystem} with the parsed objects.
@@ -90,7 +90,7 @@ public class CSVReader {
         }
     }
 
-    private int getInt(String[] parts, Map<String, Integer> map, String key) {
+    public int getInt(String[] parts, Map<String, Integer> map, String key) {
         String value = getStr(parts, map, key);
         // Debug: Show the value retrieved for the key
         //System.out.println("Retrieved value for " + key + ": " + value); // Debug line
@@ -102,12 +102,12 @@ public class CSVReader {
         }
     }
 
-    private String getStr(String[] parts, Map<String, Integer> map, String key) {
+    public String getStr(String[] parts, Map<String, Integer> map, String key) {
         Integer idx = map.get(key.toLowerCase());
         return (idx != null && idx < parts.length) ? parts[idx].trim() : "";
     }
 
-    private double getDouble(String[] parts, Map<String, Integer> map, String key) {
+    public double getDouble(String[] parts, Map<String, Integer> map, String key) {
         String value = getStr(parts, map, key);
         try {
             return value.isEmpty() ? 0.0 : Double.parseDouble(value);

@@ -63,7 +63,7 @@ public class UserManager {
     }
     
     // Helper method to validate the user type
-    private static boolean isValidUserType(String userType) {
+    public static boolean isValidUserType(String userType) {
         return userType.equals("scientist") || userType.equals("agency") || userType.equals("admin");
     }
     
