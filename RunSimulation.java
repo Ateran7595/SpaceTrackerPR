@@ -11,6 +11,7 @@ import java.io.*;
 public class RunSimulation {
     private static final Scanner scanner = new Scanner(System.in);
     private static final TrackingSystem trackingSystem = new TrackingSystem();
+    private static final ImpactAnalysis ImpactAnalysis = new ImpactAnalysis();
     private static Map<String, Boolean> loginStatus = new HashMap<>();
     /**
      * The main method launches the application, loads data from a CSV file,
@@ -24,7 +25,7 @@ public class RunSimulation {
         while (true) {
             System.out.println("\nSelect user type:");
             System.out.println("1. Scientist\n2. Space Agency Rep\n3. Administrator\n4. EXIT");
-            // Try adding self explanatory inputs //
+            System.out.print("Choose option 1-4: ");
             String choice = scanner.nextLine();
 
             switch (choice) {
@@ -106,6 +107,7 @@ public class RunSimulation {
         while (true) {
             System.out.println("\nScientist Menu:");
             System.out.println("1. Track Objects in Space\n2. Assess Orbit Status\n3. Back");
+            System.out.print("Choose option 1-3: ");
             String choice = scanner.nextLine();
             if (choice.equals("1")) {
                 LoggerUtility.log("Scientist selected to track objects in space.");
@@ -129,18 +131,25 @@ public class RunSimulation {
         while (true) {
             System.out.println("\nSpace Agency Menu:");
             System.out.println("1. Analyze Long-Term Impact\n2. Generate Density Reports\n3. Back");
+            System.out.print("Choose option 1-3: ");
             String choice = scanner.nextLine();
             if (choice.equals("1")) {
+                List<SpaceObject> spaceObjects = trackingSystem.getAllObjects();
                 LoggerUtility.log("Space Agency analyzed long-term impact.");
-                trackingSystem.analyzeLongTermImpact();
+                ImpactAnalysis.analyzeLongTermImpact(spaceObjects);
                 break;
             } else if (choice.equals("2")) {
-                System.out.print("Enter minimum longitude: ");
-                double minLon = Double.parseDouble(scanner.nextLine());
-                System.out.print("Enter maximum longitude: ");
-                double maxLon = Double.parseDouble(scanner.nextLine());
-                LoggerUtility.log("Space Agency generated density report.");
-                trackingSystem.generateDensityReport(minLon, maxLon);
+                try {
+                    System.out.print("Enter minimum longitude: ");
+                    double minLon = Double.parseDouble(scanner.nextLine());
+                    System.out.print("Enter maximum longitude: ");
+                    double maxLon = Double.parseDouble(scanner.nextLine());
+                    LoggerUtility.log("Space Agency generated density report.");
+                    trackingSystem.generateDensityReport(minLon, maxLon);
+                } catch (Exception e) {
+                    System.err.println("\nInvalid longitude");
+                }
+                
                 break;
             } else if (choice.equals("3")) {
                 LoggerUtility.log("Space Agency returned to main menu.");
@@ -158,6 +167,7 @@ public class RunSimulation {
         while (true) {
             System.out.println("\nAdministrator Menu:");
             System.out.println("1. Create User\n2. Manage User\n3. Delete User\n4. Back");
+            System.out.print("Choose option 1-4: ");
             String choice = scanner.nextLine();
             
             switch (choice) {
@@ -185,6 +195,7 @@ public class RunSimulation {
     private static void scientistTrackObjectsMenu() {
         System.out.println("\nTrack Objects:");
         System.out.println("1. Rocket Body\n2. Debris\n3. Payload\n4. Unknown\n5. Back");
+        System.out.print("Choose option 1-5: ");
         String option = scanner.nextLine();
         switch (option) {
             case "1":
@@ -214,6 +225,7 @@ public class RunSimulation {
     private static void scientistOrbitStatusMenu() {
         System.out.println("\nAssess Orbit Status:");
         System.out.println("1. Track Objects in LEO\n2. Assess if debris is still in orbit\n3. Back");
+        System.out.print("Choose option 1-3: ");
         String option = scanner.nextLine();
         switch (option) {
             case "1":
@@ -236,7 +248,7 @@ public class RunSimulation {
     private static void loadDataFromCSV() {
         CSVReader reader = new CSVReader();
         try {
-            reader.loadObjects("rso_metrics.csv", trackingSystem);
+            reader.loadObjects("rso_metrics_columns_jumbled.csv", trackingSystem);
             LoggerUtility.log("System successfully loaded data from rso_metrics.csv.");
             System.out.println("Data loaded successfully from rso_metrics.csv.");
         } catch (IOException e) {
