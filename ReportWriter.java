@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class ReportWriter {
-
+    // Returns the updated report to user whenever he exits the program
     public static void writeUpdatedReport(List<SpaceObject> objects, String filePath) {
         try (FileWriter writer = new FileWriter(filePath)) {
             // Write CSV header

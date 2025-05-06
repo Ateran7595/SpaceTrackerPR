@@ -1,10 +1,13 @@
 /**
- * The {@code UnknownObject} class represents an unknown space object. It is a subclass of {@link SpaceObject}
- * and serves as a default or fallback for objects whose type cannot be identified.
+ * The {@code UnknownObject} class represents an unknown space object. 
+ * It is a subclass of {@link SpaceObject} and serves as a default or fallback 
+ * for objects whose type cannot be identified.
  */
 public class UnknownObject extends SpaceObject {
 
+    /** The number of conjunction events (close approaches) this object has been involved in. */
     private int conjunctionCount;
+
     /**
      * Constructs a new {@code UnknownObject} with the specified attributes.
      *
@@ -20,22 +23,34 @@ public class UnknownObject extends SpaceObject {
      * @param avgLongitude the average longitude of the object
      * @param geoHash the geohash representing the location of the object
      * @param daysOld the number of days since the object was launched
+     * @param conjunctionCount the number of conjunction events associated with this object
      */
     public UnknownObject(int recordId, int noradId, String satelliteName, String country, String orbitType,
                          String objectType, int launchYear, String launchSite, double longitude,
                          double avgLongitude, String geoHash, int daysOld, int conjunctionCount) {
         super(recordId, noradId, satelliteName, country, orbitType, objectType,
               launchYear, launchSite, longitude, avgLongitude, geoHash, daysOld);
+        this.conjunctionCount = conjunctionCount;
     }
 
-
+    /**
+     * Returns the number of conjunction events this object has been involved in.
+     *
+     * @return the conjunction count
+     */
     public int getConjunctionCount() {
         return conjunctionCount;
     }
-    
+
+    /**
+     * Sets the number of conjunction events for this object.
+     *
+     * @param conjunctionCount the number of conjunction events
+     */
     public void setConjunctionCount(int conjunctionCount) {
         this.conjunctionCount = conjunctionCount;
     }
+
     /**
      * Returns the type of object as "Unknown".
      *

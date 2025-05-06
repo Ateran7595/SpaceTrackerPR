@@ -90,10 +90,11 @@ public class CSVReader {
         }
     }
 
+    /**
+     * Handles proper parsing of a integers in CSV file.
+     */
     public int getInt(String[] parts, Map<String, Integer> map, String key) {
         String value = getStr(parts, map, key);
-        // Debug: Show the value retrieved for the key
-        //System.out.println("Retrieved value for " + key + ": " + value); // Debug line
         try {
             return value.isEmpty() ? 0 : Integer.parseInt(value);
         } catch (NumberFormatException e) {
@@ -102,11 +103,17 @@ public class CSVReader {
         }
     }
 
+    /**
+     * Handles proper parsing of a string in a CSV file.
+     */
     public String getStr(String[] parts, Map<String, Integer> map, String key) {
         Integer idx = map.get(key.toLowerCase());
         return (idx != null && idx < parts.length) ? parts[idx].trim() : "";
     }
 
+    /**
+     * Handles proper parsing of doubled in CSV file.
+     */
     public double getDouble(String[] parts, Map<String, Integer> map, String key) {
         String value = getStr(parts, map, key);
         try {

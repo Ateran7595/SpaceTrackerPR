@@ -57,18 +57,17 @@ public class TrackingSystem {
      */
     public void displayObjectsInLEO() {
         List<SpaceObject> leoObjects = new ArrayList<>();
-    
         for (SpaceObject obj : getAllObjects()) {
             if (obj.getOrbitType().equalsIgnoreCase("LEO")) {
                 leoObjects.add(obj);
             }
         }
-    
+
         if (leoObjects.isEmpty()) {
             System.out.println("No objects found in LEO.");
             return;
         }
-    
+
         for (SpaceObject obj : leoObjects) {
             System.out.println("Record ID: " + obj.getRecordId() +
                     ", Name: " + obj.getSatelliteName() +
@@ -92,52 +91,56 @@ public class TrackingSystem {
         return new ArrayList<>(spaceObjects); // return a copy to avoid external modification
     }
 
+    /**
+     * Assesses each tracked object's orbital status and risk level.
+     * Also exports the assessment results to CSV and text files.
+     * An object is considered in orbit if it meets several conditions such as
+     * known orbit type, valid longitude, and not being too old.
+     */
     public void assessOrbitStatusAndExport() {
         int inOrbitCount = 0;
         int exitedCount = 0;
         List<SpaceObject> exitedDebris = new ArrayList<>();
-    
+
         for (SpaceObject obj : spaceObjects) {
             boolean hasOrbitType = obj.getOrbitType() != null && !obj.getOrbitType().equalsIgnoreCase("unknown");
             boolean hasLongitude = obj.getLongitude() != 0.0;
-            boolean hasConjunction = true;  // assume true unless Debris
-        
+            boolean hasConjunction = true;
+
             if (obj instanceof Debris) {
                 hasConjunction = ((Debris) obj).getConjunctionCount() >= 1;
             }
-        
+
             boolean stillInOrbit = hasOrbitType && hasLongitude && obj.getDaysOld() < 15000 && hasConjunction;
             obj.setStillInOrbit(stillInOrbit);
-        
+
             double drift = Math.abs(obj.getLongitude() - obj.getAvgLongitude());
             String risk;
             if (drift > 50) risk = "High";
             else if (drift > 10) risk = "Moderate";
             else risk = "Low";
             obj.setRiskLevel(risk);
-        
+
             if (stillInOrbit) inOrbitCount++;
             else {
                 exitedCount++;
                 exitedDebris.add(obj);
             }
         }
-        
-    
+
         exportToCSV("assessed_debris.csv");
         writeExitedDebrisReport("exited_debris_report.txt", inOrbitCount, exitedCount, exitedDebris);
     }
 
     /**
-     * Exports all space object data to a CSV file.
+     * Exports all tracked space object data to a CSV file.
      *
-     * @param fileName the name of the CSV file to write
+     * @param fileName the name of the CSV file to write to
      */
     private void exportToCSV(String fileName) {
         try (PrintWriter writer = new PrintWriter(fileName)) {
-            // Header
             writer.println("RecordID,Name,Country,OrbitType,ObjectType,LaunchYear,LaunchSite,Longitude,AvgLongitude,GeoHash,DaysOld,StillInOrbit,RiskLevel");
-    
+
             for (SpaceObject obj : spaceObjects) {
                 writer.printf("%d,%s,%s,%s,%s,%d,%s,%.2f,%.2f,%s,%d,%b,%s\n",
                         obj.getRecordId(),
@@ -155,7 +158,7 @@ public class TrackingSystem {
                         obj.getRiskLevel()
                 );
             }
-    
+
             System.out.println("CSV export complete.");
         } catch (Exception e) {
             e.printStackTrace();
@@ -163,12 +166,12 @@ public class TrackingSystem {
     }
 
     /**
-     * Writes a report of all objects that have exited orbit to a TXT file.
+     * Writes a report of all space objects that have exited orbit to a text file.
      *
-     * @param fileName      the name of the TXT file
-     * @param inOrbit       the count of objects still in orbit
-     * @param exited        the count of objects that have exited
-     * @param exitedDebris  the list of debris objects that exited orbit
+     * @param fileName      the name of the text file to create
+     * @param inOrbit       number of objects still in orbit
+     * @param exited        number of objects that have exited orbit
+     * @param exitedDebris  list of objects that have exited orbit
      */
     private void writeExitedDebrisReport(String fileName, int inOrbit, int exited, List<SpaceObject> exitedDebris) {
         try (PrintWriter writer = new PrintWriter(fileName)) {
@@ -177,7 +180,7 @@ public class TrackingSystem {
             writer.println("In-Orbit Count: " + inOrbit);
             writer.println("Exited Count: " + exited);
             writer.println();
-    
+
             writer.println("Exited Debris Details:");
             for (SpaceObject obj : exitedDebris) {
                 writer.printf("Record ID: %d, Name: %s, Country: %s, Orbit Type: %s, Launch Year: %d, Launch Site: %s, Longitude: %.2f, Avg Longitude: %.2f, Geohash: %s, Days Old: %d\n",
@@ -193,21 +196,27 @@ public class TrackingSystem {
                         obj.getDaysOld()
                 );
             }
-    
+
             System.out.println("TXT report written successfully.");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Generates a density report of tracked space objects within a specified longitude range.
+     *
+     * @param minLongitude the minimum longitude for the range
+     * @param maxLongitude the maximum longitude for the range
+     */
     public void generateDensityReport(double minLongitude, double maxLongitude) {
         System.out.printf("\nGenerating density report for longitude range %.2f to %.2f...\n", minLongitude, maxLongitude);
         int count = 0;
-    
+
         System.out.printf("%-10s %-25s %-15s %-12s %-12s %-15s\n", 
             "RecordID", "Satellite Name", "Country", "Orbit Type", 
             "Launch Year", "Object Type");
-    
+
         for (SpaceObject obj : spaceObjects) {
             double lon = obj.getLongitude();
             if (lon >= minLongitude && lon <= maxLongitude) {
@@ -217,12 +226,14 @@ public class TrackingSystem {
                     obj.getOrbitType(), obj.getLaunchYear(), obj.getObjectType());
             }
         }
-    
+
         System.out.println("Total objects in range: " + count);
     }
 
+    /**
+     * Analyzes the long-term impact of space objects using the {@link ImpactAnalysis} module.
+     */
     public void analyzeLongTermImpact() {
         impactAnalysis.analyzeLongTermImpact(spaceObjects); // Delegate the analysis
     }
-
 }

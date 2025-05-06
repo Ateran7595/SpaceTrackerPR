@@ -1,9 +1,19 @@
 import java.util.*;
 import java.io.*;
 
+/**
+ * The {@code UserManager} class provides utility methods to manage user accounts,
+ * including loading, saving, creating, updating, and deleting users from a CSV file.
+ */
 public class UserManager {
+    /** Path to the CSV file used to store user data. */
     private static final String FILE_PATH = "users.csv";
 
+    /**
+     * Loads the list of users from the CSV file.
+     *
+     * @return a list of {@link User} objects loaded from the file
+     */
     public static List<User> loadUsers() {
         List<User> users = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
@@ -21,6 +31,11 @@ public class UserManager {
         return users;
     }
 
+    /**
+     * Saves a list of users to the CSV file.
+     *
+     * @param users the list of {@link User} objects to be saved
+     */
     public static void saveUsers(List<User> users) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_PATH))) {
             writer.println("username,password,userType");
@@ -32,6 +47,12 @@ public class UserManager {
         }
     }
 
+    /**
+     * Creates a new user by prompting input from the user via the console.
+     * Validates the user type and checks for duplicate usernames before saving.
+     *
+     * @param scanner the {@link Scanner} object used to read user input
+     */
     public static void createUser(Scanner scanner) {
         System.out.print("Enter new username: ");
         String username = scanner.nextLine();
@@ -39,35 +60,41 @@ public class UserManager {
         String password = scanner.nextLine();
         System.out.print("Enter user type (scientist, agency, admin): ");
         String userType = scanner.nextLine().toLowerCase();
-    
-        // Validate userType to ensure it is one of the allowed types
+
         if (!isValidUserType(userType)) {
             System.out.println("Invalid user type. Please enter one of the following: scientist, agency, admin.");
             return;
         }
-    
+
         List<User> users = loadUsers();
-    
-        // Check if username already exists
         for (User u : users) {
             if (u.getUsername().equalsIgnoreCase(username)) {
                 System.out.println("Username already exists!");
                 return;
             }
         }
-    
-        // Add new user and save to file
+
         users.add(new User(username, password, userType));
         saveUsers(users);
         System.out.println("User created successfully.");
     }
-    
-    // Helper method to validate the user type
+
+    /**
+     * Validates whether the given user type is one of the allowed values.
+     *
+     * @param userType the type of user to validate
+     * @return {@code true} if the user type is valid, {@code false} otherwise
+     */
     public static boolean isValidUserType(String userType) {
         return userType.equals("scientist") || userType.equals("agency") || userType.equals("admin");
     }
-    
 
+    /**
+     * Allows modification of an existing user's username and/or password.
+     * Prompts the user for input and updates the information in the CSV file.
+     *
+     * @param scanner the {@link Scanner} object used to read user input
+     */
     public static void manageUser(Scanner scanner) {
         List<User> users = loadUsers();
 
@@ -97,21 +124,25 @@ public class UserManager {
         System.out.println("User not found.");
     }
 
+    /**
+     * Deletes a user from the list based on the username provided via console input.
+     * Asks for confirmation before deletion.
+     *
+     * @param scanner the {@link Scanner} object used to read user input
+     */
     public static void deleteUser(Scanner scanner) {
         List<User> users = loadUsers();
-    
+
         System.out.print("Enter username to delete: ");
         String username = scanner.nextLine();
-    
-        // Iterate through the list of users to find the matching username
+
         Iterator<User> iterator = users.iterator();
         while (iterator.hasNext()) {
             User user = iterator.next();
             if (user.getUsername().equalsIgnoreCase(username)) {
-                // Ask for confirmation before deletion
                 System.out.print("Are you sure you want to delete this user? (yes/no): ");
                 String confirmation = scanner.nextLine().toLowerCase();
-    
+
                 if (confirmation.equals("yes")) {
                     iterator.remove();
                     saveUsers(users);
@@ -123,7 +154,7 @@ public class UserManager {
                 }
             }
         }
-    
+
         System.out.println("User not found.");
-    }    
+    }
 }
